@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ineza Serge | Website Developer</title>
+<meta name="description" content="Have an idea? Let's talk. I'm Ineza Serge, a website developer building fast, modern and animated websites.">
+<meta name="author" content="Ineza Serge">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://YOUR-USERNAME.github.io/">
+
+<!-- Link previews: WhatsApp, LinkedIn, Facebook, Telegram -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ineza Serge">
+<meta property="og:title" content="Ineza Serge | Website Developer">
+<meta property="og:description" content="Have an idea? Let's talk.">
+<meta property="og:url" content="https://YOUR-USERNAME.github.io/">
+<meta property="og:image" content="https://YOUR-USERNAME.github.io/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ineza Serge, website developer. Have an idea? Let's talk.">
+
+<!-- Link previews: X (Twitter) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ineza Serge | Website Developer">
+<meta name="twitter:description" content="Have an idea? Let's talk.">
+<meta name="twitter:image" content="https://YOUR-USERNAME.github.io/assets/og-image.jpg">
+
+<!-- Helps Google connect your name, photo and profiles -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://YOUR-USERNAME.github.io/#website",
+      "url": "https://YOUR-USERNAME.github.io/",
+      "name": "Ineza Serge"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://YOUR-USERNAME.github.io/#person",
+      "name": "Ineza Serge",
+      "jobTitle": "Website Developer",
+      "url": "https://YOUR-USERNAME.github.io/",
+      "image": "https://YOUR-USERNAME.github.io/assets/ineza.png",
+      "sameAs": [
+        "https://github.com/YOUR-GITHUB",
+        "https://www.linkedin.com/in/YOUR-LINKEDIN"
+      ]
+    }
+  ]
+}
+</script>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+
+  <!-- Theme: runs before paint. Saved choice wins, otherwise the device setting is used -->
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem("theme"); } catch (e) {}
+      var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", saved || (dark ? "dark" : "light"));
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="nav">
+    <a href="#home" class="logo" data-goto="home">Ineza<span>.</span></a>
+
+    <nav class="nav__links" id="menu" aria-label="Main navigation">
+      <a href="#home" data-goto="home">Home</a>
+      <a href="#about" data-goto="about">About</a>
+      <a href="#services" data-goto="services">What I do</a>
+      <a href="#skills" data-goto="skills">Skills</a>
+      <a href="#projects" data-goto="projects">Projects</a> 
+      <a href="#contact" data-goto="contact">Contact</a>
+    </nav>
+
+    <div class="nav__tools">
+      <a href="#contact" class="btn btn--primary nav__cta" data-goto="contact">Let's talk</a>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between dark and light theme">
+        <i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun"></i>
+      </button>
+      <button class="icon-btn nav__burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ PINNED STAGE: hero → about → services ============ -->
+    <section class="stage" id="home">
+
+      <!-- ---------- HERO ---------- -->
+      <div class="layer layer--hero">
+        <div class="hero container">
+
+          <div class="hero__copy">
+            <div data-collapse>
+              <p class="pill" data-intro><span class="pill__dot"></span> Available for new projects</p>
+            </div>
+
+            <div data-collapse>
+              <h1 class="hero__title" data-intro>Hi, I'm<br><span class="blue">Ineza Serge</span></h1>
+            </div>
+
+            <div data-collapse>
+              <p class="hero__role" data-intro>A passionate <span class="role-wrap"><span class="js-role">Website Developer</span></span></p>
+            </div>
+
+            <div data-collapse>
+              <p class="hero__text" data-intro>I build modern, fast and animated websites that look great on every screen and feel good to use.</p>
+            </div>
+
+            <div data-collapse class="hero__actions">
+              <a href="#services" class="btn btn--primary" data-intro data-goto="services">What I do <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="#contact" class="btn btn--outline" data-intro data-goto="contact">Let's talk</a>
+            </div>
+          </div>
+
+          <div class="hero__visual">
+            <div class="hero__window" data-collapse>
+              <div class="window" data-intro>
+                <div class="window__bar"><span></span><span></span><span></span><em>portfolio.js</em></div>
+                <div class="code" aria-label="Code sample">
+                  <span class="ln"><span class="c-k">const</span> <span class="c-v">ineza</span> = {</span>
+                  <span class="ln">  <span class="c-p">name</span>: <span class="c-s">"Ineza Serge"</span>,</span>
+                  <span class="ln">  <span class="c-p">role</span>: <span class="c-s">"Website Developer"</span>,</span>
+                  <span class="ln">  <span class="c-p">skills</span>: [</span>
+                  <span class="ln">    <span class="c-s">"Web"</span>, <span class="c-s">"Backend"</span>, <span class="c-s">"Mobile"</span>,</span>
+                  <span class="ln">    <span class="c-s">"AI"</span>, <span class="c-s">"Design"</span>,</span>
+                  <span class="ln">  ],</span>
+                  <span class="ln">  <span class="c-p">available</span>: <span class="c-k">true</span>,</span>
+                  <span class="ln">};<span class="caret"></span></span>
+                </div>
+              </div>
+            </div>
+
+            <span class="badge badge--1" data-collapse><b data-intro><i class="fa-brands fa-react"></i> React</b></span>
+            <span class="badge badge--2" data-collapse><b data-intro><i class="fa-brands fa-node-js"></i> Node.js</b></span>
+            <span class="badge badge--3" data-collapse><b data-intro><i class="fa-brands fa-figma"></i> Figma</b></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------- ABOUT ---------- -->
+      <div class="layer layer--about" id="about">
+        <div class="about container">
+
+          <div class="about__story">
+            <p class="kicker">About me</p>
+
+            <div class="chapters">
+              <article class="chapter">
+                <span class="chapter__tag">01 · Who I am</span>
+                <h2>Hi, I'm Ineza. I turn <span class="blue">ideas</span> into websites.</h2>
+                <p>Every great website starts as a tiny idea in someone's head. I love being the person who makes that idea move, click and feel alive on the screen.</p>
+              </article>
+
+              <article class="chapter">
+                <span class="chapter__tag">02 · How I work</span>
+                <h2>Design with <span class="blue">care</span>, code with <span class="blue">precision</span>.</h2>
+                <p>Clean code, smooth animation, fast loading and layouts that feel right on every device: that's the recipe I follow in every project.</p>
+              </article>
+
+              <article class="chapter">
+                <span class="chapter__tag">03 · What drives me</span>
+                <h2>Always learning, always <span class="blue">building</span>.</h2>
+                <p>From websites to backend systems, mobile apps and AI-powered tools, I keep exploring new things. There is always something new to build.</p>
+              </article>
+            </div>
+
+            <div class="dots" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+
+          <div class="about__art">
+            <div class="window">
+              <div class="window__bar"><span></span><span></span><span></span><em>about.js</em></div>
+              <div class="code" aria-hidden="true">
+                <span class="ln" data-step="0"><span class="c-c">// 01 · who I am</span></span>
+                <span class="ln" data-step="0"><span class="c-k">const</span> <span class="c-v">who</span> = <span class="c-s">"Ineza Serge"</span>;</span>
+                <span class="ln" data-step="0"><span class="c-k">const</span> <span class="c-v">focus</span> = <span class="c-s">"websites that move"</span>;</span>
+
+                <span class="ln" data-step="1"><span class="c-c">// 02 · how I work</span></span>
+                <span class="ln" data-step="1"><span class="c-k">const</span> <span class="c-v">approach</span> = [</span>
+                <span class="ln" data-step="1">  <span class="c-s">"clean code"</span>,</span>
+                <span class="ln" data-step="1">  <span class="c-s">"smooth animation"</span>,</span>
+                <span class="ln" data-step="1">  <span class="c-s">"fast on every device"</span>,</span>
+                <span class="ln" data-step="1">];</span>
+
+                <span class="ln" data-step="2"><span class="c-c">// 03 · what drives me</span></span>
+                <span class="ln" data-step="2"><span class="c-k">let</span> <span class="c-v">learning</span> = <span class="c-k">true</span>;</span>
+                <span class="ln" data-step="2"><span class="c-k">while</span> (<span class="c-v">learning</span>) {</span>
+                <span class="ln" data-step="2">  <span class="c-p">build</span>();</span>
+                <span class="ln" data-step="2">}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------- SERVICES ---------- -->
+      <div class="layer layer--services" id="services">
+        <div class="services container">
+          <p class="kicker">What I do</p>
+          <h2 class="section-title">One developer, <span class="blue">five ways to help</span></h2>
+
+          <div class="cards">
+            <article class="service-card service-card--main">
+              <span class="service-card__num">01</span>
+              <span class="service-card__icon"><i class="fa-solid fa-laptop-code"></i></span>
+              <h3>Website Developer</h3>
+              <p>Responsive, fast and animated websites that look great on every screen and are built to grow with your business.</p>
+              <ul class="mini-tags">
+                <li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li><li>Vue</li>
+              </ul>
+              <span class="service-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </article>
+
+            <article class="service-card">
+              <span class="service-card__num">02</span>
+              <span class="service-card__icon"><i class="fa-solid fa-server"></i></span>
+              <h3>Backend Developer</h3>
+              <p>Secure APIs, databases and server logic.</p>
+              <span class="service-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </article>
+
+            <article class="service-card">
+              <span class="service-card__num">03</span>
+              <span class="service-card__icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+              <h3>Mobile Developer</h3>
+              <p>Smooth apps for Android and iOS.</p>
+              <span class="service-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </article>
+
+            <article class="service-card">
+              <span class="service-card__num">04</span>
+              <span class="service-card__icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+              <h3>AI Creator</h3>
+              <p>Smart tools and AI workflows that save time.</p>
+              <span class="service-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </article>
+
+            <article class="service-card">
+              <span class="service-card__num">05</span>
+              <span class="service-card__icon"><i class="fa-solid fa-pen-ruler"></i></span>
+              <h3>Graphic Designer</h3>
+              <p>Logos, brand visuals and clean graphics.</p>
+              <span class="service-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="skills" id="skills">
+      <div class="container skills__head reveal">
+        <h2 class="section-title">My <span class="blue">skills</span></h2>
+        <p class="skills__note">Tools I work with</p>
+      </div>
+
+      <div class="marquee">
+        <div class="marquee__track">
+          <div class="tile"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
+          <div class="tile"><i class="fa-brands fa-css3-alt"></i><span>CSS3</span></div>
+          <div class="tile"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
+          <div class="tile"><i class="fa-brands fa-react"></i><span>React</span></div>
+          <div class="tile"><i class="fa-brands fa-vuejs"></i><span>Vue.js</span></div>
+          <div class="tile"><i class="fa-brands fa-sass"></i><span>Sass</span></div>
+          <div class="tile"><i class="fa-brands fa-bootstrap"></i><span>Bootstrap</span></div>
+          <div class="tile"><i class="fa-brands fa-git-alt"></i><span>Git</span></div>
+          <div class="tile"><i class="fa-brands fa-github"></i><span>GitHub</span></div>
+          <div class="tile"><i class="fa-brands fa-npm"></i><span>npm</span></div>
+        </div>
+      </div>
+
+      <div class="marquee marquee--reverse">
+        <div class="marquee__track">
+          <div class="tile"><i class="fa-brands fa-node-js"></i><span>Node.js</span></div>
+          <div class="tile"><i class="fa-brands fa-php"></i><span>PHP</span></div>
+          <div class="tile"><i class="fa-brands fa-laravel"></i><span>Laravel</span></div>
+          <div class="tile"><i class="fa-brands fa-python"></i><span>Python</span></div>
+          <div class="tile"><i class="fa-solid fa-database"></i><span>SQL</span></div>
+          <div class="tile"><i class="fa-brands fa-docker"></i><span>Docker</span></div>
+          <div class="tile"><i class="fa-brands fa-android"></i><span>Android</span></div>
+          <div class="tile"><i class="fa-solid fa-mobile-screen"></i><span>Mobile</span></div>
+          <div class="tile"><i class="fa-solid fa-brain"></i><span>AI Tools</span></div>
+          <div class="tile"><i class="fa-brands fa-figma"></i><span>Figma</span></div>
+          <div class="tile"><i class="fa-solid fa-pen-ruler"></i><span>Graphics</span></div>
+        </div>
+      </div>
+    </section>
+
+        <!-- ============ PROJECTS (horizontal slider) ============ -->
+    <section class="projects" id="projects">
+      <div class="container projects__head">
+        <div>
+          <p class="kicker">Currently building</p>
+          <h2 class="section-title">Projects <span class="blue">in progress</span></h2>
+        </div>
+        <p class="projects__count" aria-hidden="true"><b class="js-count">01</b> / 04</p>
+      </div>
+
+      <div class="projects__track">
+
+        <!-- 1 · EFYI -->
+        <article class="project" style="--r:-3deg" data-progress="65">
+          <header class="project__top">
+            <span class="project__num">01</span>
+            <span class="status"><i></i>In progress</span>
+          </header>
+          <div class="project__intro">
+            <h3 class="project__title">EFYI</h3>
+            <p class="project__type">Video editor platform</p>
+            <p class="project__desc">A video editor platform where you can make your own effects and turn ordinary clips into something special.</p>
+          </div>
+          <div class="preview" role="img" aria-label="Interface preview coming soon">
+            <div class="preview__bar"><span></span><span></span><span></span></div>
+            <!-- Later: replace the skeleton below with <img src="assets/efyi.png" alt="EFYI interface"> and delete .preview__badge -->
+            <div class="preview__body sk-editor">
+              <div class="sk"></div>
+              <div class="tl">
+                <div class="sk" style="width:72%"></div>
+                <div class="sk" style="width:48%;margin-left:14%"></div>
+                <div class="sk" style="width:60%;margin-left:32%"></div>
+              </div>
+            </div>
+            <div class="preview__badge"><span>In progress · <b class="js-pct">65%</b></span></div>
+          </div>
+          <footer class="project__foot">
+            <div class="bar"><span class="bar__fill"></span></div>
+            <p class="project__pct"><b class="js-pct">65%</b> complete</p>
+          </footer>
+        </article>
+
+        <!-- 2 · AYTI -->
+        <article class="project project--blue" style="--r:2.5deg" data-progress="40">
+          <header class="project__top">
+            <span class="project__num">02</span>
+            <span class="status"><i></i>In progress</span>
+          </header>
+          <div class="project__intro">
+            <h3 class="project__title">AYTI</h3>
+            <p class="project__type">SaaS platform</p>
+            <p class="project__desc">A SaaS platform that helps developers build, manage and ship their work faster.</p>
+          </div>
+          <div class="preview" role="img" aria-label="Interface preview coming soon">
+            <div class="preview__bar"><span></span><span></span><span></span></div>
+            <div class="preview__body sk-dash">
+              <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+              <div class="bars">
+                <i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:45%"></i><i style="--h:80%"></i>
+                <i style="--h:55%"></i><i style="--h:90%"></i><i style="--h:65%"></i><i style="--h:75%"></i>
+              </div>
+            </div>
+            <div class="preview__badge"><span>In progress · <b class="js-pct">40%</b></span></div>
+          </div>
+          <footer class="project__foot">
+            <div class="bar"><span class="bar__fill"></span></div>
+            <p class="project__pct"><b class="js-pct">40%</b> complete</p>
+          </footer>
+        </article>
+
+        <!-- 3 · School Management System -->
+        <article class="project" style="--r:-2deg" data-progress="80">
+          <header class="project__top">
+            <span class="project__num">03</span>
+            <span class="status"><i></i>In progress</span>
+          </header>
+          <div class="project__intro">
+            <h3 class="project__title project__title--long">School Management System</h3>
+            <p class="project__type">Platform design</p>
+            <p class="project__desc">A design for a platform that helps schools manage students, teachers, classes and results in one place.</p>
+          </div>
+          <div class="preview" role="img" aria-label="Interface preview coming soon">
+            <div class="preview__bar"><span></span><span></span><span></span></div>
+            <div class="preview__body sk-school">
+              <div class="sk"></div>
+              <div class="rows">
+                <div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div>
+              </div>
+            </div>
+            <div class="preview__badge"><span>In progress · <b class="js-pct">80%</b></span></div>
+          </div>
+          <footer class="project__foot">
+            <div class="bar"><span class="bar__fill"></span></div>
+            <p class="project__pct"><b class="js-pct">80%</b> complete</p>
+          </footer>
+        </article>
+
+        <!-- 4 · SEES -->
+        <article class="project project--blue" style="--r:3.5deg" data-progress="25">
+          <header class="project__top">
+            <span class="project__num">04</span>
+            <span class="status"><i></i>In progress</span>
+          </header>
+          <div class="project__intro">
+            <h3 class="project__title">SEES</h3>
+            <p class="project__type">Chat application</p>
+            <p class="project__desc">A chat application for talking with family and friends, simple, fast and made to keep people close.</p>
+          </div>
+          <div class="preview" role="img" aria-label="Interface preview coming soon">
+            <div class="preview__bar"><span></span><span></span><span></span></div>
+            <div class="preview__body sk-chat">
+              <div class="sk bub" style="--w:52%"></div>
+              <div class="sk bub bub--me" style="--w:40%"></div>
+              <div class="sk bub" style="--w:64%"></div>
+              <div class="sk bub bub--me" style="--w:30%"></div>
+            </div>
+            <div class="preview__badge"><span>In progress · <b class="js-pct">25%</b></span></div>
+          </div>
+          <footer class="project__foot">
+            <div class="bar"><span class="bar__fill"></span></div>
+            <p class="project__pct"><b class="js-pct">25%</b> complete</p>
+          </footer>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <div class="contact__card container reveal">
+        <div class="contact__text">
+          <p class="contact__kicker">Got an idea?</p>
+          <h2 class="contact__title">Have an idea?<br>Let's talk.</h2>
+          <p class="contact__lead">Have a project, a new concept or just want to say hi? Send me a message. I reply fast and I love a good idea.</p>
+          <div class="contact__actions">
+            <a class="btn btn--white" href="mailto:hello@example.com"><i class="fa-solid fa-paper-plane"></i> Get in touch</a>
+          </div>
+        </div>
+
+        <ul class="contact__list">
+          <li><a href="mailto:inezaserge3@gmail.com"><i class="fa-regular fa-envelope"></i><span>Email<small>inezaserge3@gmail.com</small></span></a></li>
+          <li><a href="https://www.github.com/inezaserge"><i class="fa-brands fa-github"></i><span>GitHub<small>github.com/inezaserge</small></span></a></li>
+          <li><a href="https://www.instagram.com/___mwirabura"><i class="fa-brands fa-instagram"></i><span>Instagram<small>instagram.com/in/___mwirabura</small></span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <a href="#home" class="logo" data-goto="home">Ineza<span>.</span></a>
+        <p class="footer__tag">Design. Develop. Create. Grow.</p>
+      </div>
+
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#home" data-goto="home">Home</a>
+        <a href="#about" data-goto="about">About</a>
+        <a href="#services" data-goto="services">What I do</a>
+        <a href="#skills" data-goto="skills">Skills</a>
+        <a href="#contact" data-goto="contact">Contact</a>
+        <a href="contact.html">Contact page</a>
+      </nav>
+
+      <div class="socials">
+        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span id="year"></span> Ineza Serge. All rights reserved.</p>
+      <p>Built with care and a lot of coffee.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
