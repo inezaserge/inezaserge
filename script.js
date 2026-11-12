@@ -72,6 +72,7 @@ document.addEventListener("click", (e) => {
 // Highlight the nav link of the section you are in
 const spyIds = ["home", "about", "services", "skills", "projects", "contact"];
 const navLinks = $$(".nav__links a");
+const nav = $(".nav");
 
 ScrollTrigger.create({
   start: 0,
@@ -82,6 +83,9 @@ ScrollTrigger.create({
     let current = "home";
     spyIds.forEach((id) => { if (scrollTarget(id) <= y) current = id; });
     navLinks.forEach((a) => a.classList.toggle("is-active", a.dataset.goto === current));
+
+    // words only on Home and About, glass pill from "What I do" onward
+    nav.classList.toggle("nav--clear", current === "home" || current === "about");
   },
 });
 
@@ -126,6 +130,20 @@ const servicesLayer = $(".layer--services");
 const chapters = $$(".chapter");
 const dots = $$(".dot");
 const codeSteps = [0, 1, 2].map((n) => $$(`.about .ln[data-step="${n}"]`));
+/* ---------- Background video: pause when off-screen or when calm motion is preferred ---------- */
+const bgVideo = $(".bgvideo video");
+if (bgVideo) {
+  const saveData = navigator.connection && navigator.connection.saveData;
+  if (reduceMotion || saveData) {
+    bgVideo.removeAttribute("autoplay");
+    bgVideo.pause(); // the still poster image stays visible
+  } else {
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) bgVideo.play().catch(() => {});
+      else bgVideo.pause(); // saves battery once you scroll past the stage
+    }).observe(stage);
+  }
+}
 
 // Distance an element must travel to land in the middle of the stage
 const toCenter = (el) => {
