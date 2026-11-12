@@ -123,9 +123,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: fixed; inset: 0 0 auto 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0.8rem clamp(1rem, 4vw, 3rem);
-  background: var(--bg);
+
+  background: rgba(255, 255, 255, 0.55);               /* see-through white */
+  -webkit-backdrop-filter: blur(1px) saturate(10%);  /* Safari */
+  backdrop-filter: blur(1px) saturate(10%);          /* the blur */
   border-bottom: 1px solid var(--border);
 }
+
+[data-theme="dark"] .nav { background: rgba(10, 16, 32, 0.5); }
 
 .logo { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; }
 .logo span { color: var(--blue); }
@@ -565,4 +570,202 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .project__type { font-size: 0.85rem; }
   .preview__bar { display: none; }
   .projects__count { font-size: 0.85rem; }
+}
+/* ---------- Video background (hero → about → services) ---------- */
+/* The pinned stage always uses dark colours, so text stays readable on the video */
+.stage {
+  --blue: #5b9bff;
+  --blue-btn: #2f6df0;
+  --blue-soft: rgba(91, 155, 255, 0.16);
+  --bg: #060b18;
+  --bg-soft: rgba(255, 255, 255, 0.06);
+  --card: rgba(8, 14, 30, 0.72);
+  --text: #f4f7ff;
+  --muted: #b9c4dd;
+  --border: rgba(255, 255, 255, 0.16);
+  --border-strong: rgba(255, 255, 255, 0.28);
+  --code-str: #7dd3fc;
+  --code-var: #bfdbfe;
+  color: var(--text);
+  color-scheme: dark;
+}
+
+.bgvideo { position: absolute; inset: 0; z-index: 0; overflow: hidden; isolation: isolate; background: #060b18; }
+.bgvideo video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 65% 50%;
+  filter: grayscale(1) contrast(1.05) brightness(0.85);
+}
+/* blue tint */
+.bgvideo::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: #2563eb; mix-blend-mode: color; opacity: 0.7;
+}
+/* dark fade so the text on the left is easy to read */
+.bgvideo::after {
+  content: ""; position: absolute; inset: 0; z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(5, 10, 24, 0.88) 0%, rgba(5, 10, 24, 0.6) 45%, rgba(5, 10, 24, 0.35) 100%),
+    linear-gradient(180deg, rgba(5, 10, 24, 0.5), rgba(5, 10, 24, 0.15) 40%, rgba(5, 10, 24, 0.7));
+}
+/* ---------- Floating pill navbar ---------- */
+.nav {
+  inset: 12px 0 auto 0;               /* 12px gap from the top, no longer full width */
+  width: min(960px, 92%);             /* narrower: make 960px smaller for an even smaller bar */
+  margin-inline: auto;                /* keeps it centered */
+  padding: 0.4rem 0.5rem 0.4rem 1.2rem;   /* smaller height: lower the first/third numbers to shrink more */
+  border: 1px solid var(--border);
+  border-radius: 999px;               /* fully rounded; try 1.2rem for a softer rectangle */
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 10px 30px -14px rgba(11, 18, 32, 0.25);
+}
+[data-theme="dark"] .nav {
+  background: rgba(10, 16, 32, 0.55);
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+}
+
+.logo { font-size: 1.3rem; }
+
+.nav__links { gap: 0.1rem; }
+.nav__links a { padding: 0.4rem 0.85rem; border-radius: 999px; font-size: 0.9rem; }
+.nav__links a::after { display: none; }                       /* remove the old underline */
+.nav__links a:hover { background: var(--blue-soft); color: var(--text); }
+.nav__links a.is-active { background: var(--blue-soft); color: var(--blue); }
+
+.nav__tools { gap: 0.4rem; }
+.nav .nav__cta { padding: 0.5rem 1.1rem; font-size: 0.85rem; border-radius: 999px; }
+.nav .icon-btn { width: 38px; height: 38px; border-radius: 50%; }
+
+@media (max-width: 760px) {
+  .nav { width: 94%; padding: 0.35rem 0.4rem 0.35rem 1rem; }
+  .nav__links {
+    top: calc(100% + 0.6rem);          /* menu opens as a rounded card under the pill */
+    border: 1px solid var(--border);
+    border-radius: 1.4rem;
+    box-shadow: 0 18px 40px -20px rgba(11, 18, 32, 0.35);
+  }
+}
+/* ---------- Navbar: words only on Home and About, glass pill from "What I do" ---------- */
+.nav {
+  transition: background-color 0.35s, border-color 0.35s, box-shadow 0.35s,
+              -webkit-backdrop-filter 0.35s, backdrop-filter 0.35s;
+}
+
+/* transparent state: no background, no blur, no border */
+.nav.nav--clear,
+[data-theme="dark"] .nav.nav--clear {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.nav--clear .logo,
+.nav--clear .nav__links a { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45); }
+.nav--clear .logo { color: #fff; }
+.nav--clear .icon-btn { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.3); color: #fff; }
+
+@media (min-width: 761px) {
+  .nav--clear .nav__links a { color: rgba(255, 255, 255, 0.8); }
+  .nav--clear .nav__links a:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+  .nav--clear .nav__links a.is-active { background: rgba(255, 255, 255, 0.16); color: #fff; }
+}
+/* ============ BLACK & WHITE: replaces every blue ============ */
+:root {
+  --blue: #0b0b0f;
+  --blue-btn: #0b0b0f;
+  --blue-soft: #f0f1f3;
+  --on-accent: #ffffff;           /* text colour on top of black buttons */
+  --arch: #0b0b0f;                /* shape behind your photo */
+  --text: #0b0b0f;
+  --muted: #5f6068;
+  --bg-soft: #f6f6f7;
+  --border: #e4e4e7;
+  --border-strong: #d4d4d8;
+  --code-str: #52525b;
+  --code-var: #18181b;
+}
+
+[data-theme="dark"] {
+  --blue: #ffffff;
+  --blue-btn: #ffffff;
+  --blue-soft: rgba(255, 255, 255, 0.1);
+  --on-accent: #0b0b0f;
+  --arch: #26262b;
+  --bg: #09090b;
+  --bg-soft: #111114;
+  --card: #141418;
+  --text: #fafafa;
+  --muted: #a1a1aa;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --code-str: #a1a1aa;
+  --code-var: #e4e4e7;
+}
+
+/* The video section is always dark */
+.stage {
+  --blue: #ffffff;
+  --blue-btn: #ffffff;
+  --blue-soft: rgba(255, 255, 255, 0.12);
+  --on-accent: #0b0b0f;
+  --arch: #26262b;
+  --bg: #050506;
+  --bg-soft: rgba(255, 255, 255, 0.06);
+  --card: rgba(10, 10, 12, 0.72);
+  --text: #fafafa;
+  --muted: #c4c4cc;
+  --border: rgba(255, 255, 255, 0.16);
+  --border-strong: rgba(255, 255, 255, 0.28);
+  --code-str: #a1a1aa;
+  --code-var: #e4e4e7;
+}
+
+/* Video: pure black and white, no blue tint */
+.bgvideo { background: #000; }
+.bgvideo::before { display: none; }
+.bgvideo::after {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.6) 45%, rgba(0, 0, 0, 0.35) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15) 40%, rgba(0, 0, 0, 0.7));
+}
+
+/* Text on top of the black / white buttons */
+.btn--primary { color: var(--on-accent); box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.5); }
+.btn--primary:hover { box-shadow: 0 14px 28px -12px rgba(0, 0, 0, 0.55); }
+.service-card:hover .service-card__icon,
+.service-card__arrow,
+.socials a:hover { color: var(--on-accent); }
+
+/* Photo arch */
+.portrait__arch { background: var(--arch); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6); }
+
+/* Contact card and project cards: black in both themes */
+.contact__card { background: #0b0b0f; border: 1px solid var(--border); }
+.btn--white { color: #0b0b0f; }
+.contact__list i { color: #0b0b0f; }
+.project--blue { background: #0b0b0f; border: 1px solid var(--border); color: #fff; }
+.project--blue .project__type { color: #d4d4d8; }
+
+/* Menu bar in dark theme */
+[data-theme="dark"] .nav { background: rgba(9, 9, 11, 0.55); }
+@media (max-width: 760px) {
+  [data-theme="dark"] .nav__links { background: rgba(9, 9, 11, 0.92); }
+}
+
+/* Neutral shadows (the old ones were blue) */
+.window { box-shadow: 0 30px 60px -32px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.05); }
+.badge b { box-shadow: 0 16px 30px -18px rgba(0, 0, 0, 0.5); }
+.service-card:hover { box-shadow: 0 24px 44px -26px rgba(0, 0, 0, 0.5); }
+.tile:hover { box-shadow: 0 18px 32px -20px rgba(0, 0, 0, 0.5); }
+.project { box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.45); }
+.preview__badge span { box-shadow: 0 18px 36px -16px rgba(0, 0, 0, 0.5); }
+
+@keyframes ping {
+  0%       { box-shadow: 0 0 0 0 rgba(128, 128, 128, 0.5); }
+  80%, 100% { box-shadow: 0 0 0 10px rgba(128, 128, 128, 0); }
 }
